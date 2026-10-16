@@ -1,0 +1,32 @@
+{
+  "name": "plaza-wifi-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Backend del portal cautivo Plaza Cumbres: integración RouterOS (REST), servidor RADIUS y API interna de hotspot.",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "node --watch --env-file-if-exists=.env src/server.ts",
+    "start": "node --env-file-if-exists=.env src/server.ts",
+    "test": "node --test --test-concurrency=1 \"test/**/*.test.ts\"",
+    "typecheck": "tsc --noEmit",
+    "db:migrate": "node --env-file-if-exists=.env src/db/migrate.ts",
+    "mock:router": "node --env-file-if-exists=.env tools/routeros-mock.ts",
+    "wg:generar": "node tools/generar-walled-garden.ts",
+    "red:validar": "node tools/validar-red.ts"
+  },
+  "dependencies": {
+    "fastify": "^5.12.7",
+    "ioredis": "^5.8.2",
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.10",
+    "@types/node": "^24.0.0",
+    "@types/pg": "^8.23.1",
+    "radius": "^1.1.4",
+    "typescript": "^7.0.2"
+  }
+}
